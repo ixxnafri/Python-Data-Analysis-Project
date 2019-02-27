@@ -1,0 +1,261 @@
+\documentclass[11 pt,USletter,oneside]{article}
+\usepackage{amsmath,amssymb,hyperref,xcolor}
+\usepackage{natbib}
+\setlength{\textwidth}{7.0in}
+\setlength{\hoffset}{0in}
+\setlength{\marginparwidth}{0in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\marginparsep}{0in}
+\setlength{\voffset}{0in}
+\setlength{\topmargin}{-0.75in}
+\setlength{\headheight}{0.25in}
+\setlength{\headsep}{0.25in}
+\setlength{\textheight}{9.0in}
+\hyphenpenalty=100
+\newcommand{\todo}[1]{\vspace{5 mm}\par\noindent\framebox{
+    \begin{minipage}[c]{0.95 \textwidth}\begin{flushleft}\tt #1
+    \end{flushleft}\end{minipage}}\vspace{5 mm}\par}
+
+\renewcommand{\baselinestretch}{1.0}
+\renewcommand{\arraystretch}{1.2}
+\color[HTML]{303030} % Default foreground color
+\definecolor{link}{HTML}{096A7D} % Hyperlinks
+\hypersetup{colorlinks,breaklinks,urlcolor=link,linkcolor=link}
+%\pagenumbering{gobble}
+\usepackage{rotating,afterpage}
+\usepackage{graphicx}
+\begin{document}
+
+\begin{center}
+\textbf {ATMS 305: Computing and Analysis}\\
+Module 1: Introduction to Unix \& Shell Scripting\\
+Due: September 5, 2017\\
+\end{center}
+
+\noindent
+\textbf {Basic Unix Commands}\\
+To complete the Module 1 lab exercise, you will need to open a terminal window in cocalc.com using by selecting the 
+	\texttt {+Create} button or the 
+	\texttt {+New} tab, followed by the 
+	\texttt {$>$\_Terminal} button.  You may name your terminal by the date or by whatever convention you choose. [50 pts]\\
+ 
+\begin{enumerate}
+\item \textbf { Directory Navigation} \\ For each of the following directives, make note of the terminal response or output.  You will hand in your notes as the first assignment. [20 pts]
+\begin{enumerate}
+
+\item Determine your current working directory.  What is it?
+    		\begin{verbatim}
+    			~$ pwd    		\
+end{verbatim}
+\item List the contents of the current directory in long format. What additional information is provided when using the option \texttt {-l}?
+    		\begin{verbatim}
+    			~$ ls -l
+    		\end{verbatim}
+\item List the contents of the current directory in long format with hidden files revealed. What additional files/directories are present in your home directory?
+	\begin{verbatim}   
+ 			~$ ls -al
+    		\end{verbatim}
+\item Create a direct
+    		\begin{verbatim}
+    			~$ mkdir test
+    		\end{verbatim}\item Change the current working
+ directory to the new \textit {test} directory.
+    		\begin{verbatim}
+    			~$ cd test && ls -l
+    		\end{verbatim}What does the symbol \&\& do?\\
+
+\item Change the working directory back to your home directory.
+    		\begin{verbatim}
+    			~$ cd ..
+    		\end{verbatim}
+What do the two periods accomplish? To discover for yourself, you may wish to create a directory beneath test and move to this new directory.  Use cd with the periods, and use cd alone.  What is the difference?\\
+ 
+\item Write a new function called cd to combine the operations cd and ls as follows.  Be careful with your syntax.
+\begin{verbatim}
+	function cd() {
+    new_directory="$*";
+    if [ $# -eq 0 ]; then 
+        new_directory=${HOME};
+    fi;
+    builtin cd "${new_directory}" && ls
+	}
+	
+\end{verbatim}
+Describe what happens each time the builtin command cd is used? If you are annoyed by this feature, you may enter the function again as it appears above but omitting the \texttt {\&\& ls} portion of the final line.\\
+
+\item Within the directory \textit {test}, make a new file with the command:
+\begin{verbatim}
+	~$ echo this\ is\ my\ first\ file > test.txt
+\end{verbatim}
+
+Why do we use the backslash (also called an escape)? How can you verify your file has been created?\\
+\item Read your file with the following command.
+\begin{verbatim}
+	~$ more test.txt
+	
+\end{verbatim}
+What happens? \\
+\item We can add a second line as follows:
+\begin{verbatim}
+	~$ echo this\ is\ the\ second\ line >> test.txt
+	
+\end{verbatim}
+How does this command differ from your previous version?\\
+
+\item When using \texttt {more filename}, you can search for a particular string by selecting the forward slash key, typing the string, and pressing enter.  However, if you want to look for a string in multiple files, then the command grep is a better option.  Type the following:
+
+\begin{verbatim}
+	~$ grep second test.txt
+	
+\end{verbatim}
+Notice the syntax: \texttt {~\$ grep string filename}.  What is the output?
+
+\item Move to your top directory and remove your \textit {test} directory with the following command.
+ 
+\begin{verbatim}
+	~$ rmdir test
+	
+\end{verbatim}
+Has your file been removed? How can you verify that your directory has been removed?\\
+\item If your file has not been removed, try typing 
+\begin{verbatim}
+	~$ man rmdir
+	
+\end{verbatim}
+
+This is the builtin documentation. Why does this command not work?\\
+\item Try removing the \textit { test} directory by using the following:
+\begin{verbatim}
+	~$ rm -rf test
+	
+\end{verbatim}
+What is the primary difference between rm and rmdir?  What do the options -rf mean?\\
+
+    \end{enumerate}
+    
+
+\begin{enumerate}
+\item Display the current file permissions on the file monthly\_in\_situ\_co2\_mlo.csv.  What are they? (\textbf{N.B.} You can type the beginning of a filename to the point of it being a unique filename and then use tab to autocomplete the filename.)
+\begin{verbatim}
+	~$ ls -l monthly_in_situ_co2_mlo.csv 
+
+\end{verbatim}
+
+
+\item Restrict access to the file questions by removing read permissions for group and other. 
+
+\begin{verbatim}
+	~$ chmod go-r monthly_in_situ_co2_mlo.csv
+	
+\end{verbatim}
+
+\item Display the
+\begin{verbatim}
+	~$ ls -l questions
+	
+
+
+\end{enumerate}
+
+\item \textbf { Viewing Files}\\
+
+For each of the following directives make note of the response or output of your terminal.  You will hand in your notes as the first assignment. [10 pts] 
+
+\begin{enumerate}
+\item List your files.
+\begin{verbatim}
+	~$ ls
+\end{verbatim}
+
+\item View the file history using either less or more.
+\begin{verbatim}
+	~$ more monthly_
+
+\end{verbatim}
+
+Using more, you will see a prompt at the bottom of your screen which looks something like :
+
+                           --More--(15%)
+\item Type the Return key a few of times to see one new line of text displayed on the screen each time. Note how the percentage in the prompt changes.
+Press space onType b to go back one full page in the file.
+
+Type q to quit the pager and return to the system prompt.\\
+
+\item Now that\begin{verbatim}
+
+	~$ history
+\end{verbatim}
+\end{enumerate}
+
+    
+\item \textbf { Manipulating Files} \\
+Upon completin\begin{enumerate}
+
+
+\item List the\begin{verbatim}
+
+	~$ ls
+	\end{verbatim}
+
+Note that the file old is one of the files in your home directory.\\
+\item  Copy ol
+
+	~$ cp old new
+	~$ ls
+	\end{verbatim
+
+}
+\item  Rename the file old to ancient. List your files to confirm that ancient and new exist. 
+\begin{verbatim}
+	~$ mv old anc
+	~$ ls
+	
+\end{verbatim}
+\item Remove the file ancient and then list your files to ensure it has been removed. 
+\begin{verbatim}
+	~$ rm ancient
+	~$ ls
+	
+\end{verbatim}
+\item Create a directory called myfolder. List your files to ensure that myfolder was created. 
+\begin{verbatim}
+	~$ mkdir myfolder
+	~$ ls
+	
+\end{verbatim}
+\item Set your current working directory to myfolder. Do not, however, type in the entire name of the directory. Instead type the first two letters and use Tab completion to fill in the rest of the file name.
+
+\begin{verbatim}
+	~$ cd my<Tab> (Press the Tab key)
+	
+\end{verbatim}
+\item Copy the file new from your home directory to myfolder.
+\begin{verbatim}
+	~$ cp ~/new new
+	
+\end{verbatim}
+\item Using a wildcard, list all of the files that begin with the letter n.
+\begin{verbatim}
+	~$  ls n*
+	
+\end{verbatim}
+\item  Return to your home directory.
+
+\begin{verbatim}
+	~$ cd
+	
+\end{verbatim}
+\item  Remove the directory called myfolder and all of its contents. List your files to ensure that it was removed.
+\begin{verbatim}
+	~$ rm -r myfolder
+	~$ ls
+	
+\end{verbatim}
+\end{enumerate} 
+    
+\end{enumerate}        
+\vspace{3em}
+
+
+\end{document}

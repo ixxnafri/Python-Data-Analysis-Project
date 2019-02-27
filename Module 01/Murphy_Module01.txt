@@ -1,0 +1,41 @@
+1. (a) /home/user/Module 01
+   (b) It's listed from top to bottom instead of left to right
+   (c) total 154
+drwx------  2 user user     .
+drwxr-xr-x 11 user user     ..
+   (d)drwx------
+   (e) the && allows me to put in two commands at once
+   (f) two periods would represend the parent directory
+   (g) It lists Module 01
+   (h) we do this to indicate the end of the individual string(word)
+   (i) it says "this is my first file"
+   (j) the double >> represents an addition to the file and not a replacement
+   (k) the output is the first line of text.txt but it has the word "second" highlighted in red
+   (l) my file has not been removed because there are contents inside of it
+   (m) it tells me the directory is not empty 
+   (n) rmdir remove a directory, rm removes anything, and -rf removes all the files in a directory
+
+2. (a) 2017-08-31-080634.term  ATMS_305_M1_Lab.pdf  monthly_in_situ_co2_mlo.csv  new  test.txt
+   (b) rw------- 1 user user 72328 Aug 31 01:46 monthly_in_situ_co2_mlo.csv
+   (c)drwx------  2 user user     7 Sep  6 21:17 .
+drwxr-xr-x 11 user user    14 Sep  6 20:20 ..
+-rw-------  1 user user    36 Sep  6 20:35 2017-08-31-080634.term
+-rw-------  1 user user 83627 Aug 31 01:45 ATMS_305_M1_Lab.pdf
+-rw-------  1 user user 72328 Aug 31 01:46 monthly_in_situ_co2_mlo.csv
+-rw-------  1 user user 65586 Aug 31 13:33 new
+-rw-------  1 user user    46 Aug 31 13:20 test.txt 
+these files are not executable, only readable and writable
+to undo the changes you can use unmask to reinstate the default permissions
+
+3. (a) by hitting return it scrolls one line at a time, hitting spacebar pages forward, and the b key pages back. q quits the display
+
+4. I find tab to be incredibly important. It really helps speed up the process of typing in file names.
+
+ls is very important to show what's in your directory so everything is organized correctly
+
+the mv command is another important command to help orgainze your files by moving files to different directories
+
+mkdir is essential because it creates a directory, and a directory is where you store all of your files
+
+
+   

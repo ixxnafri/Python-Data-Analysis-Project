@@ -1,0 +1,96 @@
+1.a pwd shows the current working directory as /home/user/Module 01
+
+
+1.b ls is a linux shell command that list directory contents of files and directories and an addition of -l will give you a list with long format and show permissions of the files.
+
+
+1.c -al/-la  will show a list long format that will include hidden files
+
+
+1.d the permission for this directory is read, write, and execute
+
+1.e && is "and". What it means is it change current directory to the new test directory "and" give a list with long format + show permission of the files
+    total 0 shows us that there is a total of 0 files inside the new directory
+
+1.f cd .. command moves the directory back by one directory, also known as the parent directory while cd command takes you back to the root/home directory 
+
+1.g
+
+function cd() {
+new_directory="$*";
+if [ $# -eq 0 ]; then
+new_directory=${HOME};
+fi;
+builtin cd "${new_directory}" 
+}
+
+when cd is used, it will go to the root directory and will list the files/directory that is contained in the root directory. In this case, Module 01.
+
+1.h The backslash (\) character is used to mark special characters so that they are not interpreted by the shell, but passed on to the command being run
+
+1.i "this is my first file" pops out. it read and echo the line onto the terminal
+
+1.j it has two ">>" character compared to the first line that has only one ">" character.
+
+1.k the output is the whole second line "this is the second line" with the word second highlighted.
+
+1.l the file has not been removed. We can verify that the directory haven't been removed by typing "ls" in the terminal. 
+
+1.m The command does not work because rmdir only remove empty directory
+
+1.n The primary differences between rm and rmdir is that rm removes files and directories while rmdir only removes directories. Option -rf means force recursively remove directories and contents
+
+2.a read and write permission for the owner, read for group and others
+	-rw-r--r--
+
+2.b changes the permission for group to others. 
+	-rw-------
+
+2.c ls: cannot access 'questions': No such file or directory
+
+3.a listed all the files by typing “-ls”
+ATMS_305_M1_Lab.aux          ATMS_305_M1_Lab.synctex.gz
+ATMS_305_M1_Lab.fdb_latexmk  ATMS_305_M1_Lab.tex
+ATMS_305_M1_Lab.fls          Module 1 Lab.term
+ATMS_305_M1_Lab.log          monthly_in_situ_co2_mlo.csv
+ATMS_305_M1_Lab.out          ATMS_305_M1_Lab.pdf	
+
+3.b "-----------------------------------------------------------------
+--------------------------"
+" Atmospheric CO2 concentrations (ppm) derived from in situ air measurements          
+etc..
+
+3.c
+Return key - a line of text
+Space Key - a full page
+b - go back a full page
+q - quit
+
+3.d  
+  237  ls -l monthly_in_situ_co2_mlo.csv
+  238  chmod go-r monthly_in_situ_co2_mlo.csv
+  239  ls -l questions
+  240  ls
+  241  more monthly_in_situ_co2_mlo.csv
+  242  less monthly_in_situ_co2_mlo.csv
+  243  history
+
+4.a listing all the file inside home directory
+       Module 01
+	
+4.b cp copy the data inside old, and paste into a new file called new
+
+4.c rename the file old.txt to ancient, type ls to recheck the existence of the “ancient file”
+
+4.d “rm” removes file named ancient
+
+4.e “mkdir” make directory/folder called myfolder
+
+4.f tab key completes the incomplete word that exist in the directory. For example tab-bing the word “my” will give you myfolder.
+
+4.g  copy the file from the Module 01 to myfolder
+
+4.h “*” will list all the files that begin with a specific character; in this case n.
+4.i  jump back to the home directory.
+
+4.j “rm” removes directory, -r means recursively named myfolder
